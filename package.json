@@ -1,6 +1,7 @@
 {
   "name": "statecontainer",
-  "description": "State container",
+  "description": "Simple state container",
+  "repository": "https://github.com/dsdenes/statecontainer",
   "version": "1.2.2",
   "main": "index.js",
   "license": "MIT",

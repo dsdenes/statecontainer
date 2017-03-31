@@ -1,10 +1,4 @@
-What is it?
-===========
-Object state container.
-  
-Requirements
-============
->= Node.js 7.2
+Simple object state container.
 
 Example
 =======
