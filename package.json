@@ -2,7 +2,7 @@
   "name": "statecontainer",
   "description": "Simple state container",
   "repository": "https://github.com/dsdenes/statecontainer",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "main": "index.js",
   "license": "MIT",
   "engine": {
