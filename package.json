@@ -1,0 +1,24 @@
+{
+  "name": "statecontainer",
+  "description": "State container",
+  "version": "1.2.2",
+  "main": "index.js",
+  "license": "MIT",
+  "engine": {
+    "node": ">=7.2"
+  },
+  "scripts": {
+    "start": "node --harmony index.js",
+    "test": "jest",
+    "watch": "jest --watch",
+    "release-patch": "npm version patch && npm publish",
+    "release-minor": "npm version minor && npm publish",
+    "release-major": "npm version major && npm publish"
+  },
+  "devDependencies": {
+    "jest": "^19.0.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
+  }
+}
