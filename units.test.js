@@ -1,8 +1,6 @@
 const {
   cachedResult
 } = require('./units');
-//
-// async function cachedResult(get, set, has, key, creator, {nocache, wait=true}) {
 
 it('should save result without resolving creator promise', async () => {
   const get = jest.fn();
