@@ -2,13 +2,15 @@ module.exports = {
   cachedResult
 };
 
-async function cachedResult(get, set, has, key, creator, {nocache=false, wait=false}) {
-  if (nocache || !(await has(key))) {
+function cachedResult(get, set, has, key, creator, {nocache=false, wait=false}) {
+  if (nocache || !has(key)) {
     if (wait === true) {
-      await set(key, await creator());
+      return Promise.resolve(creator())
+        .then(result => set(key, result))
+        .then(() => get(key));
     } else {
-      await set(key, creator());
+      set(key, creator());
     }
   }
-  return await get(key);
+  return get(key);
 }

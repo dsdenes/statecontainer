@@ -45,8 +45,36 @@ it('Multilevel stores should work', () => {
 });
 
 it('should get store root', () => {
-  const store = state.store('s1');
+  const store = state.store('s3');
   store.set('t1', 2);
   expect(store.get()).toEqual({t1: 2});
 });
 
+describe('cachedResult', () => {
+  it('should call creator only once by default', async () => {
+    const store = state.store('s3');
+    const creator = jest.fn();
+    store.cachedResult('ck1', creator);
+    store.cachedResult('ck1', creator);
+    await store.cachedResult('ck1', creator);
+    expect(creator).toHaveBeenCalledTimes(1);
+  });
+
+  it('should call creator only once if we dont wait for the result', async () => {
+    const store = state.store('s4');
+    const creator = jest.fn();
+    store.cachedResult('ck1', creator, {wait: false});
+    store.cachedResult('ck1', creator, {wait: false});
+    await store.cachedResult('ck1', creator, {wait: false});
+    expect(creator).toHaveBeenCalledTimes(1);
+  });
+
+  it('should call creator only once if we wait for the results', async () => {
+    const store = state.store('s5');
+    const creator = jest.fn();
+    await store.cachedResult('ck1', creator, {wait: true});
+    await store.cachedResult('ck1', creator, {wait: true});
+    await store.cachedResult('ck1', creator, {wait: true});
+    expect(creator).toHaveBeenCalledTimes(1);
+  });
+});
